@@ -1,0 +1,513 @@
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Quiz Slideshow</title>
+        <!--For Style Section-->
+        <style>
+            body {
+                background-image: url("haha.jpg");
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+                height: 100vh;
+                margin: 0;
+                color: white;
+                font-family: Arial, sans-serif;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                overflow:hidden;
+            }    
+            .quiz-container {
+                background: transparent;
+                border:2px solid rgba(255, 255, 255, .2);
+                backdrop-filter: blur(20px);
+                box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+                padding: 20px;
+                border-radius: 25px;
+                margin: 10px;
+                max-width: 480px;
+                width: 90%;
+            }
+
+            .question-slide, .options {
+                margin-bottom: 30px;
+            }
+            .question-slide h1{
+            font-size: 36px;
+            text-align: center;
+            }
+            .options ul {
+                list-style-type: none;
+                padding: 0;
+                margin: 40px ;
+            }
+
+            .options li {
+                margin-bottom: 10px;
+            }
+
+            .options label {
+                font-size: 25px;
+                padding: 2px 3px;
+                border-radius: 5px;
+                border:2px solid rgba(255, 255, 255, .2);
+                cursor: pointer;
+                display:block;
+            }
+            .options input[type="radio"] {
+                display: none;
+            }
+
+            .options label {
+                font-size: 20px;
+                padding: 10px;
+                border-radius: 5px;
+                border: 2px solid rgba(255, 255, 255, .2);
+                cursor: pointer;
+                display: block;
+                margin-bottom: 10px;
+            }
+
+            .options input[type="radio"]:checked + label {
+                background-color: rgba(255, 255, 255, 0.3);
+            }
+            .options label:hover {
+                background-color: rgba(255, 255, 255, 0.3);
+            }
+            .options .btn{
+            width: 100%;
+            height: 45px;
+            background: #fff;
+            border: none;
+            outline: none;
+            border-radius: 40px;
+            box-shadow: 0 0 10px rgba(0,0,0, .1);
+            cursor:pointer;
+            font-size: 16px;
+            color: #333;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            }
+            .options .btn:hover{
+                background-color: rgba(0,0,0, .4);
+            }
+
+            .question-slide.active, .options.active {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            .fade-in {
+        animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+        </style>
+
+    </head>
+
+    <body>
+    <form action="http://localhost/website/Database.php" method ="POST">
+    <!--For Question 1-->
+    <div class="quiz-container">
+        <div class="question-slide">
+            <h3>Question 1</h3>
+            <h1>What does PHP stands for?</h1>
+        </div>
+
+        <div class="options">
+            <h4>Options:</h4>   
+            <ul>
+                <li>
+                    <input type="radio" name="question1" id="radio1" value="a"><label for="radio1">A. Personal Home Page</label>
+                </li>
+                <li>
+                    <input type="radio" name="question2" id="radio2" value="b"><label for="radio2">B. Preprocessed Hypertext Processor</label>
+                </li>
+                <li>
+                    <input type="radio" name="question3" id="radio3" value="c"><label for="radio3">C. Hypertext Processor</label>
+                </li>
+                <li>
+                    <input type="radio" name="question4" id="radio4" value="d"><label for="radio4">D. Pretext Hypertext Processor</label>
+                </li>
+                <button type="Submit" class="btn">Next</button>
+            </ul>
+        </div>
+
+        <!--For Question 2-->
+        <div class="question-slide" style="display: none;">
+            <h3>Question 2</h3>
+            <h1>What is the use of Strlen?</h1>
+        </div>
+
+        <div class="options" style="display: none;">
+            <h4>Options:</h4>
+            <ul>
+                <li>
+                    <input type="radio" id="radio6" name="question11" value="a"><label for="radio6">A. Converts a string to lowercase</label>
+                </li>
+                <li>
+                    <input type="radio" id="radio7" name="question22" value="b"><label for="radio7">B. Counts the number of characters in a string</label>
+                </li>
+                <li>
+                    <input type="radio" id="radio8" name="question33" value="c"><label for="radio8">C. Removes whitespace from both ends of a string</label>
+                </li>
+                <li>
+                    <input type="radio" id="radio9" name="question44" value="C"><label for="radio9">D. Reverses a string</label>
+                </li>
+                <button type="Submit" class="btn">Next</button>
+            </ul>
+        </div>
+
+        <!--For Question 3-->
+        <div class="question-slide" style="display: none;">
+            <h3>Question 3</h3>
+            <h1>What is the use of Strpos?</h1>
+        </div>
+
+        <div class="options" style="display: none;">
+            <h4>Options:</h4>
+            <ul>
+                <li>
+                    <input type="radio" id="radio10" name="question111" value="a"><label for="radio10">A. Checks if a string contains only alphabetic characters</label>
+                </li>
+                <li>
+                    <input type="radio" id="radio11" name="question222" value="b"><label for="radio11">B.Finds the first occurrence of a substring in a string</label>
+                </li>
+                <li>
+                    <input type="radio" id="radio12" name="question333" value="c"><label for="radio12">C. Removes HTML and PHP tags from a string</label>
+                </li>
+                <li>
+                    <input type="radio" id="radio13" name="question444" value="d"><label for="radio13">D. Replaces a substring with another substring in a string4</label>
+                </li>
+                <button type="Submit" class="btn">Next</button>
+            </ul>
+        </div>
+
+        <!--For Question 4-->
+        <div class="question-slide" style="display: none;">
+            <h3>Question 4</h3>
+            <h1>What is the use of Strstr?</h1>
+        </div>
+
+        <div class="options" style="display: none;">
+            <h4>Options:</h4>
+            <ul>
+                <li>
+                    <input type="radio" id="radio14" name="question1111" value="a"><label for="radio14"> A. Finds the first occurrence of a substring in a string</label>
+                </li>
+                <li>
+                    <input type="radio" id="radio15" name="question2222" value="b"><label for="radio15"> B. Checks if a string contains only alphabetic characters</label>
+                </li>
+                <li>
+                    <input type="radio" id="radio16" name="question3333" value="c"><label for="radio16"> C. Removes HTML and PHP tags from a string</label>
+                </li>
+                <li>
+                    <input type="radio" id="radio17" name="question4444" value="d"><label for="radio17"> D. Replaces a substring with another substring in a string</label>
+                </li>
+                <button type="Submit" class="btn">Next</button>
+            </ul>
+        </div>
+
+        <!--For Question 5-->
+        <div class="question-slide" style="display: none;">
+            <h3>Question 5</h3>
+            <h1>What is the use of Str_replace?</h1>
+        </div>
+
+        <div class="options" style="display: none;">
+            <h4>Options:</h4>
+            <ul>
+                <li>
+                    <input type="radio" id="radio18" name="question11111" value="question"><label for="radio18">A. Splits a string into an array</label>
+                </li>
+                <li>
+                    <input type="radio" id="radio19" name="question22222" value="b"><label for="radio19">B. Replaces all occurrences of a substring with another substring in a string</label>
+                </li>
+                <li>
+                    <input type="radio" id="radio20" name="question33333" value="c"><label for="radio20">C. Checks if a string contains only numeric characters</label>
+                </li>
+                <li>
+                    <input type="radio" id="radio21" name="question44444" value="d"><label for="radio21">D. Converts a string to uppercase</label>
+                </li>
+                <button type="Submit" class="btn">Next</button>
+            </ul>
+        </div>
+
+        <!--For Question 6-->
+        <div class="question-slide" style="display: none;">
+            <h3>Question 6</h3>
+            <h1>What is the use of Strtoupper?</h1>
+        </div>
+
+        <div class="options" style="display: none;">
+            <h4>Options:</h4>
+            <ul>
+                <li>
+                    <input type="radio" id="radio22" name="question5" value="a"><label for="radio22">A. Converts a string to lowercase</label>
+                </li>
+                <li>
+                    <input type="radio" id="radio23" name="question6" value="b"><label for="radio23">B. Converts a string to a numeric value</label>
+                </li>
+                <li>
+                    <input type="radio" id="radio24" name="question7" value="c"><label for="radio24">C. Converts a string to title case</label>
+                </li>
+                <li>
+                    <input type="radio" id="radio25" name="question8" value="d"><label for="radio25">D. Converts a string to uppercase</label>
+                </li>
+                <button type="Submit" class="btn">Next</button>
+            </ul>
+        </div>
+
+        <!--For Question 7-->
+        <div class="question-slide" style="display: none;">
+            <h3>Question 7</h3>
+            <h1>What is the use of Strtolower?</h1>
+        </div>
+
+        <div class="options" style="display: none;">
+            <h4>Options:</h4>
+            <ul>
+                <li>
+                    <input type="radio" id="radio26" name="question55" value="a"><label for="radio26">A. Converts a string to uppercase</label>
+                </li>
+                <li>
+                    <input type="radio" id="radio27" name="question66" value="b"><label for="radio27">B. Converts a string to title case</label>
+                </li>
+                <li>
+                    <input type="radio" id="radio28" name="question77" value="c"><label for="radio28">C. Converts a string to lowercase</label>
+                </li>
+                <li>
+                    <input type="radio" id="radio29" name="question88" value="d"><label for="radio29">D. Converts a string to a numeric value</label>
+                </li>
+                <button type="Submit" class="btn">Next</button>
+            </ul>
+        </div>
+
+        <!--For Question 8-->
+        <div class="question-slide" style="display: none;">
+            <h3>Question 8</h3>
+            <h1>What is the use of ucfirst?</h1>
+        </div>
+
+        <div class="options" style="display: none;">
+            <h4>Options:</h4>
+            <ul>
+                <li>
+                <input type="radio" id="radio5" name="question555" value="a"><label for="radio5">A. multiple choice 1</label>
+                </li>
+                <li>
+                    <input type="radio" id="radio30"name="question666" value="b"><label for="radio30">B. multiple choice 2</label>
+                </li>
+                <li>
+                <input type="radio" id="radio31" name="question777" value="c"><label for="radio31">C. multiple choice 3</label>
+                </li>
+                <li>
+                    <input type="radio" id="radio32" name="question888" value="d"><label for="radio32">D. multiple choice 4</label>
+                </li>
+                <button type="Submit" class="btn">Next</button>
+            </ul>
+        </div>
+
+        <!--For Question 9-->
+        <div class="question-slide" style="display: none;">
+            <h3>Question 9</h3>
+            <h1>What is the use of ucwords?</h1>
+        </div>
+
+        <div class="options" style="display: none;">
+            <h4>Options:</h4>
+            <ul>
+                <li>
+                    <input type="radio" id="radio33" name="question5555" value="a"><label for="radio33">A. Converts the first character of a string to uppercase</label>
+                </li>
+                <li>
+                    <input type="radio" id="radio34" name="question6666" value="b"><label for="radio34">B. Converts the entire string to uppercase</label>
+                </li>
+                <li>
+                    <input type="radio" id="radio35" name="question7777" value="c"><label for="radio35">C. Converts the first character of each word in a string to uppercase</label>
+                </li>
+                <li>
+                    <input type="radio" id="radio36" name="question8888" value="d"><label for="radio36">D. Converts the entire string to lowercase</label>
+                </li>
+                <button type="Submit" class="btn">Next</button>
+            </ul>
+        </div>
+
+        <!-- For Question 10 -->
+        <div class="question-slide" style="display: none;">
+            <h3>Question 10</h3>
+            <h1>What is the use of echo?</h1>
+        </div>
+
+        <div class="options" style="display: none;">
+            <h4>Options:</h4>
+            <ul>
+                <li>
+                        <input type="radio" id="37" name="question55555" value="a"><label for="37">A. Printing Variables
+                </li>
+                <li>
+                        <input type="radio" id="38" name="question66666" value="b"><label for="38"> B. Executing Queries
+                </li>
+                <li>
+                        <input type="radio" id="39" name="question77777" value="c"><label for="39"> C. Styling Elements
+                </li>
+                <li>
+                        <input type="radio" id="40" name="question88888" value="d"><label for="40">D. Looping Data
+                </li>
+                <button type="Submit" class="btn">Finish!</button>
+                
+            </ul>
+        </div>
+        </body>
+    </html>
+
+
+        </form>
+    <script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+    const totalQuestions = 10;
+    let currentQuestion = 1;
+
+    function changeSlide(n) {
+        const slides = document.querySelectorAll('.question-slide');
+        const options = document.querySelectorAll('.options');
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = 'none';
+            options[i].style.display = 'none';
+            slides[i].classList.remove('fade-in');
+        }
+        slides[n - 1].style.display = 'block';
+        options[n - 1].style.display = 'block';
+        slides[n - 1].classList.add('fade-in');
+        currentQuestion = n;
+    }
+
+    // Attach a click event listener to the "Next" and "Finish" buttons
+    document.querySelectorAll('.btn').forEach(function(button) {
+        button.addEventListener('click', function(event) {
+            // Prevent the form from submitting the traditional way
+            event.preventDefault();
+            // If all questions are answered, submit the form
+            if (currentQuestion === totalQuestions) {
+                document.querySelector('form').submit();
+            } else {
+                // Change to the next slide (Next Question)
+                changeSlide(currentQuestion + 1);
+            }
+        });
+    });
+    });
+    </script>
+
+    </body>
+    </html>
+
+
+
+
+
+
+My PHP CODE file
+<?php
+
+if (isset($_POST["question55555"])) {
+
+    // Question 1
+    $question3 = isset($_POST["question3"]) ? $_POST["question3"] : '';
+
+    // Question 2
+    $question22 = isset($_POST["question22"]) ? $_POST["question22"] : '';
+
+    // Question 3
+    $question222 = isset($_POST["question222"]) ? $_POST["question222"] : '';
+
+    // Question 4
+    $question1111 = isset($_POST["question1111"]) ? $_POST["question1111"] : '';
+
+    // Question 5
+    $question22222 = isset($_POST["question22222"]) ? $_POST["question22222"] : '';
+
+    // Question 6
+    $question8 = isset($_POST["question8"]) ? $_POST["question8"] : '';
+
+    // Question 7
+    $question77 = isset($_POST["question77"]) ? $_POST["question77"] : '';
+
+    // Question 8
+    $question666 = isset($_POST["question666"]) ? $_POST["question666"] : '';
+
+    // Question 9
+    $question7777 = isset($_POST["question7777"]) ? $_POST["question7777"] : '';
+
+    // Question 10
+    $question66666 = isset($_POST["question66666"]) ? $_POST["question66666"] : '';
+
+
+    $totalcorrect = 0;
+
+
+    // Question 1
+    if ($question3 != '') {
+        $totalcorrect++;
+    }
+
+    // Question 2
+    if ($question22 != '') {
+        $totalcorrect++;
+    }
+
+    // Question 3
+    if ($question222 != '') {
+        $totalcorrect++;
+    }
+
+    // Question 4
+    if ($question1111 != '') {
+        $totalcorrect++;
+    }
+
+    // Question 5
+    if ($question22222 != '') {
+        $totalcorrect++;
+    }
+
+    // Question 6
+    if ($question8 != '') {
+        $totalcorrect++;
+    }
+
+    // Question 7
+    if ($question77 != '') {
+        $totalcorrect++;
+    }
+
+    // Question 8
+    if ($question666 != '') {
+        $totalcorrect++;
+    }
+
+    // Question 9
+    if ($question7777 != '') {
+        $totalcorrect++;
+    }
+
+    // Question 10
+    if ($question66666 != '') {
+        $totalcorrect++;
+    }
+
+    echo "$totalcorrect";
+}
+?>
